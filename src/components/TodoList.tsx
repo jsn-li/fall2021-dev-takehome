@@ -29,10 +29,6 @@ export default function TodoList() {
   }>({});
   const [filterTags, setFilterTags] = useState<Set<string>>(new Set<string>());
 
-  const addTodoItem = (todoItem: TodoItem) => {
-    setTodoItems([...todoItems, todoItem]);
-  };
-
   //
   // SORTING LOGIC
   //
@@ -191,7 +187,7 @@ export default function TodoList() {
       minW={400}
       maxW={600}
     >
-      <TodoItemForm onSubmit={addTodoItem}></TodoItemForm>
+      <TodoItemForm onSubmit={(todoItem) => setTodoItems([...todoItems, todoItem])}></TodoItemForm>
 
       {renderSortOptions()}
 
