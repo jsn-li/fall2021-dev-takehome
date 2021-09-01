@@ -50,16 +50,6 @@ export default function TodoList() {
     return -1;
   };
 
-  const compareCompletionAndDates = (a: TodoItem, b: TodoItem) => {
-    const completionComparisonResult = compareCompletion(a, b);
-
-    if (completionComparisonResult === 0) {
-      return compareDates(a, b);
-    }
-
-    return completionComparisonResult;
-  };
-
   const compareDates = (a: TodoItem, b: TodoItem) => {
     return a.dueDate.getTime() - b.dueDate.getTime();
   };
@@ -67,10 +57,10 @@ export default function TodoList() {
   const getSortedTodoItems = () => {
     const sortedTodoItems = [...todoItems];
 
-    // TODO: why is this sorting not stable???
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     if (sortByDate && sortByCompleted) {
-      sortedTodoItems.sort((a, b) => compareCompletionAndDates(a, b));
+      sortedTodoItems.sort(
+        (a, b) => compareCompletion(a, b) || compareDates(a, b)
+      );
     } else if (sortByDate) {
       sortedTodoItems.sort((a, b) => compareDates(a, b));
     } else if (sortByCompleted) {
