@@ -17,11 +17,7 @@ export default function Tag({
   const tagBody = isRemovable ? <>&times; {value}</> : <>{value}</>;
 
   return (
-    <Button
-      colorScheme={colorScheme}
-      size="xs"
-      onClick={() => onClick()}
-    >
+    <Button colorScheme={colorScheme} size="xs" onClick={() => onClick()}>
       {tagBody}
     </Button>
   );

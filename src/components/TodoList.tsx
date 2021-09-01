@@ -1,4 +1,12 @@
-import { Box, Checkbox, HStack, Text, VStack, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Box,
+  Checkbox,
+  HStack,
+  Text,
+  VStack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import Tag from "./Tag";
 import TodoItemForm from "./TodoItemForm";
@@ -100,7 +108,7 @@ export default function TodoList() {
             colorScheme={
               // if the tag is being used as a filter, set it to orange.
               // otherwise, if the todo item is complete, set it to the COMPLETED_COLOR.
-              // otherwise, the color scheme is determined by the Tag component itself. 
+              // otherwise, the color scheme is determined by the Tag component itself.
               filterTags.has(tag)
                 ? "orange"
                 : isComplete
@@ -108,7 +116,7 @@ export default function TodoList() {
                 : undefined
             }
             onClick={() => toggleFilterTag(tag)}
-        />
+          />
         </WrapItem>
       );
     });
@@ -119,17 +127,14 @@ export default function TodoList() {
   const renderTodoItems = () => {
     return getSortedTodoItems()
       .filter((todoItem) => {
-
         let shouldRender = true;
         filterTags.forEach(
           (tag) => (shouldRender = shouldRender && todoItem.tags.has(tag))
         );
 
         return shouldRender;
-
       })
       .map((todoItem) => {
-
         const isComplete = itemCompletions[todoItem.id];
 
         return (
@@ -141,7 +146,6 @@ export default function TodoList() {
             borderColor="gray.200"
             borderRadius="5px"
           >
-
             <Checkbox
               m={5}
               isChecked={isComplete}
@@ -152,26 +156,21 @@ export default function TodoList() {
                 })
               }
             >
-
               <Box>
                 <Text>Title: {todoItem.title}</Text>
                 <Text>Due Date: {todoItem.dueDate.toDateString()}</Text>
 
                 {renderTags(todoItem, isComplete)}
               </Box>
-
             </Checkbox>
-
           </Box>
         );
-
       });
   };
 
   const renderSortOptions = () => {
     return (
       <VStack spacing={5}>
-
         <HStack spacing={5}>
           <Checkbox
             isChecked={sortByDate}
@@ -189,7 +188,6 @@ export default function TodoList() {
         </HStack>
 
         <Text>Click on tags to filter.</Text>
-
       </VStack>
     );
   };
@@ -208,7 +206,9 @@ export default function TodoList() {
 
       {renderSortOptions()}
 
-      <VStack w="100%" spacing={2.5}>{renderTodoItems()}</VStack>
+      <VStack w="100%" spacing={2.5}>
+        {renderTodoItems()}
+      </VStack>
     </VStack>
   );
 }

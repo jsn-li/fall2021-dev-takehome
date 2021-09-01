@@ -3,7 +3,16 @@ import DatePicker from "react-date-picker";
 import "./TodoItemForm.css";
 import { TodoItem } from "./TodoList";
 import { v4 as uuidv4 } from "uuid";
-import { Box, Button, Center, HStack, Input, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  HStack,
+  Input,
+  Text,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import Tag from "./Tag";
 
 interface PropTypes {
@@ -53,7 +62,11 @@ export default function TodoItemForm({ onSubmit }: PropTypes) {
       );
     });
 
-    return <Wrap mt={2.5} justify="center">{tagComponents}</Wrap>;
+    return (
+      <Wrap mt={2.5} justify="center">
+        {tagComponents}
+      </Wrap>
+    );
   };
 
   const handleSubmit = () => {
