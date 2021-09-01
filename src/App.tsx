@@ -1,12 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import TodoList from './components/TodoList';
+import TodoList from "./components/TodoList";
+import { Center, ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
-      <TodoList/>
-    </div>
+    <ChakraProvider>
+      <Center>
+        <TodoList />
+      </Center>
+    </ChakraProvider>
   );
 }
 
