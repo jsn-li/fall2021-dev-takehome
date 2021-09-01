@@ -100,9 +100,8 @@ export default function TodoList() {
 
     todoItem.tags.forEach((tag: string) => {
       tagComponents.push(
-        <WrapItem>
+        <WrapItem key={tag}>
           <Tag
-            key={tag}
             value={tag}
             isRemovable={false}
             colorScheme={

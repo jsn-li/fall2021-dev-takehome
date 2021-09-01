@@ -51,13 +51,8 @@ export default function TodoItemForm({ onSubmit }: PropTypes) {
 
     tags.forEach((tag: string) => {
       tagComponents.push(
-        <WrapItem>
-          <Tag
-            key={tag}
-            value={tag}
-            isRemovable={true}
-            onClick={() => removeTag(tag)}
-          />
+        <WrapItem key={tag}>
+          <Tag value={tag} isRemovable={true} onClick={() => removeTag(tag)} />
         </WrapItem>
       );
     });
